@@ -1,0 +1,31 @@
+﻿
+@{
+    @model IEnumerable<AutoParts.Models.Entities.Product>;
+    ViewData["Title"] = "ShowAll";
+}
+<h1>Товары</h1>
+    <form>        
+        <select class="custom-select" style="width:200px;"name="categoryId" asp-items="ViewBag.CategoryList"></select>
+        <input class="custom-select" style="width:200px;" name="search" type="search" />
+        <input type="submit" class="btn btn-secondary" value="Найти" />
+    </form>
+<ul class="products clearfix">
+    </br>
+    @foreach (var item in Model)
+    {   
+        <li class="product-wrapper">
+            <div class="product">
+                <div class="item-title">
+                    <p>@item.Name</p>
+                </div>
+
+                <img style="max-width: 150px; padding-top: 30px;" src="@Url.Content(item.Image)" alt="@item.Name" />
+                <a asp-area="" asp-route-id="@item.Id" asp-controller="Catalog" asp-action="Detail">
+                    <input value="Подробнее" type="button" class="b1" />
+                </a>
+            </div>
+
+        </li>
+    }
+</ul>
+

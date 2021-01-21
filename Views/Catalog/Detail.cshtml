@@ -1,0 +1,28 @@
+﻿@{
+    @model AutoParts.Models.Entities.Product
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<button id="btnPdf" class="btn btn-primary">Generate pdf</button>
+
+
+    <h3>@Model.Name</h3>
+    <div class="product-item">
+        <div id="pdfContainer" style="text-align:center">
+            <img src="@Url.Content(Model.Image)" alt="@Model.Name">
+
+            <div class="product-list">
+                <h3>@Model.Name <br />На складе - @Model.Amount<br />Производитель - @Model.CountryManufactur<br /><br />@Model.Description </h3>
+
+                <span class="price">@Model.Price $</span>
+                <a asp-area="" asp-route-id="@Model.Id" asp-controller="Catalog" asp-action="AddToBag" class="button">В корзину</a>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $("#btnPdf").click(function () {
+        var sHtml = $("#pdfContainer").html();
+        sHtml = sHtml.replace(/</g, "StrTag").replace(/>/g, "EndTag");
+        window.open('../Home/GeneratePdf?html=' + sHtml, '_blank');
+    });
+</script>

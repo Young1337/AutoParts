@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Заказ товара";
+    //@model AutoParts.Models.Entities.Request;
+    //@model AutoParts.Models.Entities.User;
+    @model AutoParts.Models.ViewModels.RequestModel
+}
+<div class="product-list" style="display:inline-block;border-radius: 15px; ">
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        Здравствуйте  @User.Identity.Name! Здесь вы можете оставить заявку на интересующий вас товар, которого не оказалось в актуальном каталоге.<br />
+        Мы проинформируем, когда интересующий вас товар поступит к нам в магазин.
+    </p>
+
+    <form asp-action="RequestView" asp-controller="Request" asp-anti-forgery="true">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <div>
+            <div class="form-group">
+                <label class="control-label">Какая деталь вам нужна?</label><br />
+                <input type="text" asp-for="Detail" />
+                <span asp-validation-for="Detail" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Примечания</label><br />
+                <input type="text" asp-for="Note" />
+                <span asp-validation-for="Note" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ваши контакты</label><br />
+                <input type="text" asp-for="Сontacts" />
+                <span asp-validation-for="Сontacts" />
+            </div>
+            <div>
+                <input asp-action="DoRequest" asp-controller="Request" type="submit" value="Заказать" />
+            </div>
+        </div>
+    </form>
+</div>

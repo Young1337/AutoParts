@@ -1,0 +1,47 @@
+﻿@model AutoParts.Models.ViewModels.AddProductModel
+
+<h2>Добавление</h2>
+
+<form asp-action="AddProduct" asp-controller="Catalog" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="Name">Название детали</label><br />
+            <input type="text" asp-for="Name" />
+            <span asp-validation-for="Name" />
+        </div>
+        <div>
+            <label asp-for="Price">Стоймость</label><br />
+            <input type="text" asp-for="Price" />
+            <span asp-validation-for="Price" />
+        </div>
+        <div>
+            <label asp-for="Amount">Количество</label><br />
+            <input type="text" asp-for="Amount" />
+            <span asp-validation-for="Amount" />
+        </div>
+        <div>
+            <label asp-for="CountryManufactur">Страна производительс</label><br />
+            <input type="text" asp-for="CountryManufactur" />
+            <span asp-validation-for="CountryManufactur" />
+        </div>
+        <div>
+            <label asp-for="Description">Описание</label><br />
+            <input type="text" asp-for="Description" />
+            <span asp-validation-for="Description" />
+        </div>
+        <div>
+            <label asp-for="CategoryId">Категория</label><br />
+            <select asp-for="CategoryId" asp-items="ViewBag.CategoryList"></select><br />            
+            <span asp-validation-for="CategoryId" />
+        </div>
+        <div>
+            <label asp-for="Image">Фото</label><br />
+            <input asp-for="Image" />
+            <span asp-validation-for="Image" />
+        </div>
+        <div>
+            <input asp-action="AddProduct" asp-controller="Catalog" type="submit" value="Добавить деталь" />
+        </div>
+    </div>
+</form>
